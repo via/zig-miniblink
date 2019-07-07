@@ -1,12 +1,13 @@
 
-const cm3 = @cImport({
-  @cDefine("STM32F4", "1");
-  @cInclude("libopencm3/stm32/memorymap.h");
-  @cInclude("libopencm3/stm32/rcc.h");
-  @cInclude("libopencm3/stm32/gpio.h");
+const c = @cImport({
+  @cInclude("blink.h");
 });
 
-export fn main() u8 {
-    cm3.gpio_set(cm3.GPIOB, cm3.GPIO12);
-    return 22;
+export fn main() c_int {
+    return fff();
+}
+
+fn fff() c_int {
+  c.anotherfunc();
+  return c.toggle_blink();
 }
